@@ -1,6 +1,8 @@
 import logging
+import os
 
 import requests
+from dotenv import load_dotenv
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters
 
@@ -46,7 +48,8 @@ async def handle_name(update: Update, context):
 
 def app():
 
-    TOKEN = "7575409318:AAFCEu5SoCpew07SsxUKIHKiVF7fUWhjvPo"
+    load_dotenv()
+    TOKEN = os.getenv("TOKEN")
 
     application = ApplicationBuilder().token(TOKEN).build()
 
